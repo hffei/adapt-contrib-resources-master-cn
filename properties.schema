@@ -1,0 +1,222 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://jsonschema.net",
+  "required": false,
+  "globals": {
+    "resources": {
+      "type": "string",
+      "required": true,
+      "default": "Additional resources.",
+      "inputType": "Text",
+      "validators": [],
+      "translatable": true
+    }
+  },
+  "properties": {
+    "pluginLocations": {
+      "type": "object",
+      "required": true,
+      "properties": {
+        "config": {
+          "type": "object"
+        },
+        "course": {
+          "type": "object",
+          "properties": {
+            "_resources": {
+              "title": "资源",
+              "type": "object",
+              "required": false,
+              "legend": "Resources",
+              "properties": {
+                "_isEnabled": {
+                  "type": "boolean",
+                  "required":true,
+                  "default": true,
+                  "title": "启用",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Controls whether the Resources extension is enabled or disabled."
+                },
+                "_drawerOrder": {
+                  "type": "number",
+                  "required": false,
+                  "title": "弹出菜单顺序",
+                  "inputType": "Number",
+                  "default": 0,
+                  "help": "The order in which this extension should appear as a drawer item",
+                  "validators": ["number"]
+                },
+                "title": {
+                  "type": "string",
+                  "default": "资源",
+                  "required": true,
+                  "title": "标题",
+                  "inputType": "Text",
+                  "validators": ["required"],
+                  "translatable": true
+                },
+                "description": {
+                  "type": "string",
+                  "default": "选择此处查看本课程的资源",
+                  "required": false,
+                  "title": "描述",
+                  "inputType": "Text",
+                  "validators": [],
+                  "translatable": true
+                },
+                "_filterButtons": {
+                  "type": "object",
+                  "title": "过滤按钮",
+                  "properties": {
+                    "all": {
+                      "type": "string",
+                      "default": "全部",
+                      "title": "全部",
+                      "inputType": "Text",
+                      "validators": [],
+                      "translatable": true
+                    },
+                    "document": {
+                      "type": "string",
+                      "default": "文档",
+                      "title": "文档",
+                      "inputType": "Text",
+                      "validators": [],
+                      "translatable": true
+                    },
+                    "media": {
+                      "type": "string",
+                      "default": "媒体",
+                      "title": "媒体",
+                      "inputType": "Text",
+                      "validators": [],
+                      "translatable": true
+                    },
+                    "link": {
+                      "type": "string",
+                      "default": "链接",
+                      "title": "链接",
+                      "inputType": "Text",
+                      "validators": [],
+                      "translatable": true
+                    }
+                  }
+                },
+                "_filterAria": {
+                  "type": "object",
+                  "title": "无障碍",
+                  "properties": {
+                    "allAria": {
+                      "type": "string",
+                      "default": "显示所有资源",
+                      "title": "全部",
+                      "inputType": "Text",
+                      "validators": [],
+                      "translatable": true
+                    },
+                    "documentAria": {
+                      "type": "string",
+                      "default": "显示文档资源",
+                      "title": "文档",
+                      "inputType": "Text",
+                      "validators": [],
+                      "translatable": true
+                    },
+                    "mediaAria": {
+                      "type": "string",
+                      "default": "显示媒体资源",
+                      "title": "媒体",
+                      "inputType": "Text",
+                      "validators": [],
+                      "translatable": true
+                    },
+                    "linkAria": {
+                      "type": "string",
+                      "default": "显示链接资源",
+                      "title": "链接",
+                      "inputType": "Text",
+                      "validators": [],
+                      "translatable": true
+                    }
+                  }
+                },
+                "_resourcesItems": {
+                  "type": "array",
+                  "required": false,
+                  "title": "资源选项",
+                  "items": {
+                    "type": "object",
+                    "required": false,
+                    "title": "Items",
+                    "properties": {
+                      "_type": {
+                        "type": "string",
+                        "required": true,
+                        "title": "类型",
+                        "inputType": { "type": "Select", "options": ["document", "media", "link"]},
+                        "validators": ["required"]
+                      },
+                      "_forceDownload": {
+                        "type": "boolean",
+                        "default": false,
+                        "title": "强制下载",
+                        "inputType": "Checkbox",
+                        "validators": [],
+                        "help": "Forces the resource to be downloaded rather than opened in the browser. Only supported in browsers that support the 'download' attribute and for resources that are part of the course content/hosted on the same URL."
+                      },
+                      "title": {
+                        "type": "string",
+                        "required": true,
+                        "title": "标题",
+                        "inputType": "Text",
+                        "validators": ["required"],
+                        "translatable": true
+                      },
+                      "filename": {
+                        "type": "string",
+                        "required": false,
+                        "title": "文件名",
+                        "inputType": "Text",
+                        "translatable": true,
+                        "help": "Used to set the name of the downloaded file to something different to the source filename. Only supported in browsers that support the 'download' attribute and for resources that are part of the course content/hosted on the same URL. Forces the file to be downloaded regardless of what 'Force download' is set to."
+                      },
+                      "description": {
+                        "type": "string",
+                        "required": false,
+                        "title": "描述",
+                        "inputType": "Text",
+                        "validators": [],
+                        "translatable": true
+                      },
+                      "_link": {
+                        "type": "string",
+                        "required": true,
+                        "title": "链接",
+                        "inputType": "Asset",
+                        "validators": ["required"]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "contentobject": {
+          "type": "object"
+        },
+        "article": {
+          "type": "object"
+        },
+        "block": {
+          "type": "object"
+        },
+        "component": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}
